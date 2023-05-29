@@ -29,12 +29,8 @@ let package = Package(
         .target (
             name: "VPKit-static-target",
             dependencies: [
-                .target(name: "VPKit-static-binary",
-                        condition: .when(platforms: [.iOS])
-                       ),
-                .target(name: "AWS-wrapper",
-                        condition: .when(platforms: [.iOS])
-                       ),
+                .target(name: "VPKit-static-binary"),
+                .target(name: "AWS-wrapper"),
                 .product(name: "dotveep-static",
                          package: "dotveep-spm")
             ],
@@ -44,12 +40,8 @@ let package = Package(
             .target (
                 name: "VPKit-dynamic-target",
                 dependencies: [
-                    .target(name: "VPKit-dynamic-binary",
-                            condition: .when(platforms: [.iOS])
-                           ),
-                    .target(name: "AWS-wrapper",
-                            condition: .when(platforms: [.iOS])
-                           ),
+                    .target(name: "VPKit-dynamic-binary"),
+                    .target(name: "AWS-wrapper"),
                     .product(name: "dotveep-dynamic",
                              package: "dotveep-spm")
                 ],
