@@ -17,16 +17,14 @@ let package = Package(
             targets: ["VPKit-dynamic-target"]),
         
     ],
-    //    dependencies: [
-    //        .package(
-    //            name:"aws",
-    //            url: "https://github.com/aws-amplify/aws-sdk-ios-spm",
-    //            from: "2.0.0"),
-    //        .package(
-    //            name:"dotveep",
-    //            url: "https://gitlab.com/foundry/dotveep-spm/",
-    //            from: "2.0.0")
-    //    ],
+    dependencies: [
+        .package(
+            url: "https://github.com/aws-amplify/aws-sdk-ios-spm",
+            from: "2.0.0"),
+        .package(
+            url: "git@gitlab.com/foundry/dotveep-spm.git",
+            from: "2.0.0")
+    ],
     targets: [
         .target (
             name: "VPKit-static-target",
@@ -42,8 +40,17 @@ let package = Package(
             dependencies: [
                 .target(name: "VPKit-static-binary",
                         condition: .when(platforms: [.iOS])),
-                .target(name: "dotveep-static-binary",
-                        condition: .when(platforms: [.iOS])),
+//                .target(name: "dotveep-static-binary",
+//                        condition: .when(platforms: [.iOS])),
+                .product(
+                    name: "AWSCore",
+                    package: "aws-sdk-ios-spm"),
+                .product(
+                    name: "AWSKinesis",
+                    package: "aws-sdk-ios-spm"),
+                .product(name: "dotveep-static",
+                         package: "dotveep-spm")
+                
             ],
             path: "VPKit-static-wrapper"
         ),
@@ -63,8 +70,16 @@ let package = Package(
             dependencies: [
                 .target(name: "VPKit-dynamic-binary",
                         condition: .when(platforms: [.iOS])),
-                .target(name: "dotveep-dynamic-binary",
-                        condition: .when(platforms: [.iOS])),
+//                .target(name: "dotveep-dynamic-binary",
+//                        condition: .when(platforms: [.iOS])),
+                .product(
+                    name: "AWSCore",
+                    package: "aws-sdk-ios-spm"),
+                .product(
+                    name: "AWSKinesis",
+                    package: "aws-sdk-ios-spm"),
+                .product(name: "dotveep-dynamic",
+                         package: "dotveep-spm")
             ],
             path: "VPKit-dynamic-wrapper"
         ),
@@ -81,17 +96,19 @@ let package = Package(
             .binaryTarget(
                 name: "VPKit-dynamic-binary",
                 url: "https://gitlab.com/foundry/VPKit/-/raw/2.10.0/xcframeworks/VPKit-dynamic/VPKit.xcframework.zip",
-                checksum: "37c9e2b3bdb53191290c528a89b5594bcba0650dc26eebd6b0eb0e0bb10722d0"),
+                checksum: "37c9e2b3bdb53191290c528a89b5594bcba0650dc26eebd6b0eb0e0bb10722d0")
+//        ,
         
-        .binaryTarget(
-                name: "dotveep-static-binary",
-                url: "https://gitlab.com/foundry/dotveep/-/raw/2.0.1/xcframeworks/dotveep-static/dotveep.xcframework.zip",
-                checksum: "210da9aa6378c805807da4d42c7c7aba46761b755b7aa44fc2155340a25bb2b2"),
-    
-        .binaryTarget(
-            name: "dotveep-dynamic-binary",
-            url: "https://gitlab.com/foundry/dotveep/-/raw/2.0.1/xcframeworks/dotveep-dynamic/dotveep.xcframework.zip",
-            checksum: "865b74e0f931e9027203e4a29bdbbb9d486efb0ab3425b9fd63fc39d32fee637")
+//
+//        .binaryTarget(
+//                name: "dotveep-static-binary",
+//                url: "https://gitlab.com/foundry/dotveep/-/raw/2.0.1/xcframeworks/dotveep-static/dotveep.xcframework.zip",
+//                checksum: "210da9aa6378c805807da4d42c7c7aba46761b755b7aa44fc2155340a25bb2b2"),
+//
+//        .binaryTarget(
+//            name: "dotveep-dynamic-binary",
+//            url: "https://gitlab.com/foundry/dotveep/-/raw/2.0.1/xcframeworks/dotveep-dynamic/dotveep.xcframework.zip",
+//            checksum: "865b74e0f931e9027203e4a29bdbbb9d486efb0ab3425b9fd63fc39d32fee637")
         
         
     ]
