@@ -29,51 +29,31 @@ let package = Package(
         .target (
             name: "VPKit-static-target",
             dependencies: [
-                .target(name: "VPKit-static-wrapper",
+                .target(name: "VPKit-static-binary",
                         condition: .when(platforms: [.iOS])
                        ),
                 .target(name: "AWS-wrapper",
                         condition: .when(platforms: [.iOS])
-                       )
+                       ),
+                .product(name: "dotveep-static",
+                         package: "dotveep-spm")
             ],
             path: "VPKit-static-target"
         ),
         
             .target (
-                name: "VPKit-static-wrapper",
-                dependencies: [
-                    .target(name: "VPKit-static-binary",
-                            condition: .when(platforms: [.iOS])),
-                    .product(name: "dotveep-static",
-                             package: "dotveep-spm")
-                    
-                ],
-                path: "VPKit-static-wrapper"
-            ),
-        
-        
-            .target (
                 name: "VPKit-dynamic-target",
                 dependencies: [
-                    .target(name: "VPKit-dynamic-wrapper",
+                    .target(name: "VPKit-dynamic-binary",
                             condition: .when(platforms: [.iOS])
                            ),
                     .target(name: "AWS-wrapper",
                             condition: .when(platforms: [.iOS])
-                           )
-                ],
-                path: "VPKit-dynamic-target"
-            ),
-        
-            .target (
-                name: "VPKit-dynamic-wrapper",
-                dependencies: [
-                    .target(name: "VPKit-dynamic-binary",
-                            condition: .when(platforms: [.iOS])),
+                           ),
                     .product(name: "dotveep-dynamic",
                              package: "dotveep-spm")
                 ],
-                path: "VPKit-dynamic-wrapper"
+                path: "VPKit-dynamic-target"
             ),
         
             .target (name: "AWS-wrapper",
