@@ -3,7 +3,7 @@
 
 import PackageDescription
 
-//2.10.0-beta.1
+//2.10.0-beta.6
 
 let package = Package(
     name: "VPKit xcfamework",
