@@ -22,7 +22,7 @@ let package = Package(
             url: "https://github.com/aws-amplify/aws-sdk-ios-spm",
             from: "2.0.0"),
         .package(
-            url: "git@gitlab.com/foundry/dotveep-spm.git",
+            url: "https://gitlab.com/foundry/dotveep-spm",
             from: "2.0.0")
     ],
     targets: [
