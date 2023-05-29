@@ -38,7 +38,7 @@ let package = Package(
                 .product(name: "dotveep-static",
                          package: "dotveep-spm")
             ],
-            path: "VPKit-static-target"
+            path: "wrapper/VPKit-static-target"
         ),
         
             .target (
@@ -53,7 +53,7 @@ let package = Package(
                     .product(name: "dotveep-dynamic",
                              package: "dotveep-spm")
                 ],
-                path: "VPKit-dynamic-target"
+                path: "wrapper/VPKit-dynamic-target"
             ),
         
             .target (name: "AWS-wrapper",
@@ -65,7 +65,7 @@ let package = Package(
                             name: "AWSKinesis",
                             package: "aws-sdk-ios-spm")
                      ],
-                     path: "AWS-wrapper"
+                     path: "wrapper/AWS-wrapper"
                     ),
         
             .binaryTarget(
